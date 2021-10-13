@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pruebas de LocalStorage</title>
+    <style>
+        body {
+            background-color: rgb(197, 192, 184);
+        }
+        
+        body.darkMode {
+            background-color: #333333;
+            color: #d8d8d8;
+        }
+        
+        body.darkMode h1,
+        body.darkMode h2 {
+            color: white;
+            background-color: rgb(23, 117, 117);
+            text-shadow: -1px -1px 1px #000, 1px 1px 1px #000;
+        }
+        
+        h1,
+        h2 {
+            background-color: aquamarine;
+            height: 3em;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: fantasy;
+        }
+        
+        #texto {
+            text-align: justify;
+            width: 50%;
+            margin: auto;
+        }
+        
+        #img {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        img {
+            border: 2px solid white;
+            border-radius: 10px;
+        }
+        
+        #caja {
+            margin-top: 3rem;
+        }
+        
+        #boton {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 20px;
+            color: #333333;
+            padding: 15px 40px;
+            background-color: #FFD27D;
+            border-color: #d8d8d8;
+            border-width: 3px;
+            border-style: solid;
+            border-radius: 35px;
+            cursor: pointer;
+        }
+        
+        #boton:hover {
+            background-color: #333333;
+            color: #FFD27D;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> Almacenaje de datos</h1>
+    <h2> Pruebas de cambio de claro Oscuro con LocalStorage</h2>
+
+
+
+    <div id="texto">
+        <p>Los camaleones son una familia, Chamaeleonidae, de pequeños saurópsidos (reptiles) escamosos. Existen cerca de 161 especies de camaleones, la mayor parte de ellas en África al sur del Sáhara. En América se llama a menudo camaleones a lagartos
+            de la familia de los anoles, que no guardan ningún parentesco especial con los verdaderos camaleones.
+        </p>
+        <p>
+            Son famosos por su habilidad de cambiar de color según las circunstancias, por su lengua rápida y alargada, y por sus ojos, que pueden ser movidos independientemente el uno del otro.
+        </p>
+    </div>
+    <div id="img">
+        <img src="https://source.unsplash.com/300x300?chameleon" alt="foto" />
+    </div>
+    <div id="caja">
+        <center><a id="boton" value="claro">Click</a></center>
+    </div>
+
+    <script>
+	//Prueba en el tercer Commit
+        window.onload = inicio;
+
+        function inicio() {
+            document.getElementById("boton").addEventListener("click", cambio);
+
+
+        }
+
+        function cambio() {
+            
+            console.log(document.body.getAttribute("class"));
+            if (document.body.getAttribute("class")) {
+                console.log(document.body.getAttribute("class"));
+                
+                document.body.setAttribute("class", "claro");
+                console.log(document.body.getAttribute("class"));
+            }else{
+                document.body.setAttribute("class", "darkMode");
+                document.body.toggleClass("darkMode");
+            }
+        }
+/*
+        function claro() {
+            if (document.getElementById("boton").value == "darkMode") {
+                console.log(document.body.getAttribute("class"));
+                document.body.removeAttribute("class");
+                console.log(document.body.getAttribute("class"));
+                console.log(document.body.className == "darkMode");
+                // document.getElementById("boton").addEventListener("click", cambio);
+            }
+            //document.body.setAttribute("class", "p");
+        }
+  */      
+    </script>
+
+</body>
+
+</html>
