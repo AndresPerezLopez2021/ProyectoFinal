@@ -1,0 +1,10 @@
+body{
+    /*Fondo provisional para el estilo oscuro. Se debe buscar o crear un fondo de animales*/
+    background: url("../img/fondoPerro.jpg")repeat;
+}
+#espacioPagina{
+    background-color: rgb(109, 108, 116);
+}
+#imagenOscuro{
+    background: url("../img/gatoOscuro.jpg");
+}

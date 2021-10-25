@@ -1,0 +1,7 @@
+body{
+    /*Fondo provisional para el estilo claro. Se debe buscar o crear un fondo de animales*/
+    background: url("../img/fondoPez.jpg")repeat;
+}
+#logo{
+    src: "./img/PELUDO.png";
+}

@@ -2,10 +2,7 @@
     margin: 0px;
     padding: 0px;
 }
-body{
-    /*Fondo provisional para el estilo oscuro. Se debe buscar o crear un fondo de animales*/
-    background: url("../img/fondoTortuga.jpg")repeat;
-}
+
 /*Deseo englobar el contenido con un borde*/
 .clearfix {
     float: none;
