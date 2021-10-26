@@ -5,3 +5,7 @@ body{
 #logo{
     src: "./img/PELUDO.png";
 }
+#sidebar h4 span {
+    background: white;
+    padding: 5px;
+}

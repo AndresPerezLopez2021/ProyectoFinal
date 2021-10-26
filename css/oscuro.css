@@ -8,3 +8,8 @@ body{
 #imagenOscuro{
     background: url("../img/gatoOscuro.jpg");
 }
+#sidebar h4 span {
+    background:rgb(109, 108, 116);
+    padding: 5px;
+    color: white;
+}

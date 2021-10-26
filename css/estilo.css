@@ -26,15 +26,19 @@
     font-size: 28px;
     letter-spacing: 4px;
     line-height: 75px;
-    color: #333;
+    color: #333; 
+    text-transform: uppercase;
     */
     text-align: center;
     width: 100%;
     height: 80px;
     margin-bottom: 20px;
     float: left;
-    text-transform: uppercase;
 }
+#logo > img{
+    border-radius: 25%;
+}
+
 
 #menu {
     font-family: Helvetica, Arial;
@@ -48,8 +52,9 @@
     line-height: 46px;
     list-style: none;
 }
-#menu ul li:hover {
+#menu ul > li:hover {
     background-color:#466140;
+    
 }
 
 #menu ul li {
@@ -98,18 +103,6 @@ p {
     margin-bottom: 20px;
     line-height: 22px;
     text-align: justify;
-}
-
-.button-more {
-    font-size: 13px;
-    text-align: center;
-    display: block;
-    padding: 15px;
-    color: white;
-    text-decoration: none;
-    margin-top: 10px;
-    width: 90px;
-    margin-bottom: 20px;
 }
 
 #sidebar {
@@ -164,7 +157,6 @@ input[type="button"] {
     cursor: pointer;
 }
 
-
 #otrosIntereses {
     visibility: hidden;
 }
@@ -190,31 +182,43 @@ footer {
 #selector-estilo {
     position: fixed;
     top: 40%;
-    background: #466140;
+    background: #01040f;
     width: 50px;
     height: 70px;
+    border-radius: 50%;
+    margin-left: 1.5rem;
 }
 
 #claro,
 #oscuro {
     width: 25px;
     height: 25px;
-    border: 1px solid white;
     display: block;
     margin: 0px auto;
     margin-top: 5px;
     margin-bottom: 5px;
     cursor: pointer;
+    text-align: center;
+    border-radius: 100%;
 }
 
 #claro {
     background: white;
+   
+   
+}
+#claro:hover{
+    width: 30px;
+    height: 30px;
 }
 
 #oscuro {
-    background: gray;
+    background: gray;  
 }
-
+#oscuro:hover{
+    width: 30px;
+    height: 30px;
+}
 .subir {
     color: white;
     text-decoration: none;

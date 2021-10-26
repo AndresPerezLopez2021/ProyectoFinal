@@ -8,6 +8,7 @@
     <!-- Estilos CSS -->
     <link rel="stylesheet" type="text/css" href="./css/estilo.css" />
     <link rel="stylesheet" type="text/css" href="./css/claro.css" id="tema" /><!---Se va a crear un estilo base y si el usuario quiere cambiarlo que lo almacene en un localSorage-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
 
     <!-- Mis Scripts -->
     <script type="text/javascript" src="./js/index.js"></script>
@@ -16,8 +17,8 @@
 
 <body>
     <div id="selector-estilo">
-        <div id="claro"></div>
-        <div id="oscuro"></div>
+        <div id="claro" class="bi bi-sun"></div>
+        <div id="oscuro" class="bi bi-moon-fill"></div>
     </div>
 
      <!--Espacio que quiero que ocupe la página-->
@@ -53,7 +54,7 @@
 
             <aside id="sidebar">
                 <div id="about">
-                    <h4><span>¿Dinos quien eres?</span></h4>
+                    <h4><span class="span">¿Dinos quien eres?</span></h4>
                         <img id="imagenOscuro" src="./img/perroForm.jpg" />
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet malesuada erat, ac ullamcorper justo.</p>
                 </div>
@@ -61,10 +62,10 @@
                  <!--En el formulario se va a crear un patron para validar los datos desde vista cliente para que cuando se envíen los datos solo se tenga que recoger en la base de datos. -->
           
                 <div id="login">
-                    <h4><span>Identificate</span></h4>
+                    <h4><span class="span">Identificate</span></h4>
                     <form name="form" id="form">
                         <label for="nombre">
-								Nombre
+								Nombre Usuario
 							</label>
                         <input type="text" name="nombre" id="nombre" />
 
@@ -79,7 +80,7 @@
                         <input type="password" name="password" id="password" />
 
                         <input type="submit" value="Entrar" id="entrar" name="entrar" onclick="formularioIdentificacion()" />
-                        <!--En el principal.js modifico la propiedad de type="button" para que en el momento de clicar el boton se muestre el mensaje-->
+                        <!--En el index.js modifico la propiedad de type="button" para que en el momento de clicar el boton se muestre el mensaje-->
                     </form>
                 </div>
 
