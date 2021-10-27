@@ -248,3 +248,11 @@ footer {
     display: block;
     float: right;
 }
+/*Estilos contacto.html*/
+
+#posts{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    line-height: 22px;
+    text-align: justify;
+}

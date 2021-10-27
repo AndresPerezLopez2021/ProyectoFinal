@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="./css/estilo.css" />
     <link rel="stylesheet" type="text/css" href="./css/claro.css" id="tema" /><!---Se va a crear un estilo base y si el usuario quiere cambiarlo que lo almacene en un localSorage-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
 
     <!-- Mis Scripts -->
     <script type="text/javascript" src="./js/index.js"></script>
@@ -51,7 +52,58 @@
         <section id="content">
 
             <div id="posts">
-
+                <h1>Formulario de Animal Perdido</h1>
+                    <form class="row g-3 needs-validation" novalidate>
+                        <div class="col-md-4">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombreFormContac" value="Andrés">
+                            <!--Mensaje para la validación-->
+                            <div class="valid-feedback">¡Campo Correcto!</div>
+                            <div class="invalid-feedback">Debe completar el campo.</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="nombre" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="nombreFormContac" value="Pérez">
+                            <!--Mensaje para la validación-->
+                            <div class="valid-feedback">¡Campo Correcto!</div>
+                            <div class="invalid-feedback">Debe completar el campo.</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="nombre" class="form-label">Raza</label>
+                            <input type="text" class="form-control" id="nombreFormContac" value="Caniche">
+                            <!--Mensaje para la validación-->
+                            <div class="valid-feedback">¡Campo Correcto!</div>
+                            <div class="invalid-feedback">Debe completar el campo.</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="nombre" class="form-label">Fecha Encontrado</label>
+                            <input type="date" class="form-control" id="nombreFormContac" value="Pérez">
+                            <!--Mensaje para la validación-->
+                            <div class="valid-feedback">¡Campo Correcto!</div>
+                            <div class="invalid-feedback">Debe completar el campo.</div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="localidad">Localidad</label>
+                            <select name="localidad" id="localidad" class="form-select">
+                                <option select disabled value="">Seleccione...</option>
+                                <option value="Coruña">Coruña</option>
+                                <option value="Lugo">Lugo</option>
+                                <option value="Orense">Orense</option>
+                                <option value="Pontevedra">Pontevedra</option>
+                            </select>
+                            <!--Mensaje para la validación-->
+                            <div class="valid-feedback">¡Campo Correcto!</div>
+                            <div class="invalid-feedback">Debe completar el campo.</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="cargaImg" class="form-label">Subir Imagen</label>
+                            <input type="file" class="form-control" id="imgForm">
+                            <!--Mensaje para la validación-->
+                            <div class="valid-feedback">¡Campo Correcto!</div>
+                            <div class="invalid-feedback">Debe completar el campo.</div>
+                        </div>
+                        <button class="btn btn-warning fw-bold">Enviar</button>
+                    </form>
             </div>
 
             <aside id="sidebar">
@@ -65,7 +117,7 @@
           
                 <div id="login">
                     <h4><span class="span">Identificate</span></h4>
-                    <form action="" name="form" id="form"><!--validar con PHP-->
+                    <form name="form" id="form">
                         <label for="nombre">
 								Nombre Usuario
 							</label>
