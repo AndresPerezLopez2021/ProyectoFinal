@@ -41,11 +41,15 @@
 
 
 #menu {
+    display: flex;
     font-family: Helvetica, Arial;
     background: #333;
     width: 100%;
     text-transform: uppercase;
     margin-bottom: 20px;
+}
+.menuListado{
+    width: 84%;
 }
 
 #menu ul {
@@ -56,22 +60,45 @@
     background-color:#466140;
     
 }
+.bandera:hover{
+    width: 45px;
+    height: 30px;
+    border-radius: 20%;
+}
+
 
 #menu ul li {
     height: 46px;
-    display: inline-block;
+    display: -webkit-inline-flex;
     transition: all 300ms;
 }
-.hidden{
-    visibility: hidden;
+.banderas{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+}
+.bandera{
+    width: 50px;
+    height: 35px;
+    
+}
+.bandera >div img{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    cursor: pointer;
 }
 
 #menu a {
-    display: block;
+    
     color: white;
     text-decoration: none;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 #posts {
