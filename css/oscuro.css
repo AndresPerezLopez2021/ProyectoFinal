@@ -13,3 +13,12 @@ body{
     padding: 5px;
     color: white;
 }
+#entrar, #enviar{
+    color: white;
+    background-color: #466140;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px #333;
+    cursor: pointer;
+    padding: 10px;
+}
