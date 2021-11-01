@@ -23,9 +23,12 @@ body{
     padding: 10px;
 }
 /*Estilo informacion.html*/
-.h4{
+.h4, #nombre, #email, #password{
     color:#6cc98f;
     /*#83e0a6*/
+}
+b{
+    color:#5e9473;
 }
 #posts >p, ul, li{
     color: rgb(193, 200, 206);
