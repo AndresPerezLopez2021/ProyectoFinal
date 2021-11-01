@@ -253,8 +253,26 @@ footer {
     margin-top: 10px;
     margin-bottom: 250px;
     line-height: 22px;
-    text-align: justify;    
+       
 }
-#posts >h1{
+#posts >h1, #imgForm{
         text-align: center;
     }
+#form{
+   
+    align-items: center;
+    margin-left: 2rem;
+}
+#enviar{
+    width: 10rem;
+    margin: auto;
+    transition: 0.6s;
+}
+
+#enviar:hover{
+    width: 100%;
+    transition: 0.5s;
+}
+
+
+

@@ -22,3 +22,11 @@ body{
     cursor: pointer;
     padding: 10px;
 }
+/*Estilo informacion.html*/
+.h4{
+    color:#6cc98f;
+    /*#83e0a6*/
+}
+#posts >p, ul, li{
+    color: rgb(193, 200, 206);
+}

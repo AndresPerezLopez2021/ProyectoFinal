@@ -44,7 +44,7 @@
                     <li><a href="main.html">Inicio</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                     <li><a href="#">Animales</a></li>
-                    <li><a href="#">Información de Interés</a></li>  
+                    <li><a href="informacion">Información de Interés</a></li>  
                 </ul>
                 <div class="banderas">
                     <div><a href="#"><img class="bandera" src="./img/banderaGalicia.jpg"></a></div>
@@ -58,38 +58,39 @@
 
             <div id="posts">
                 <h1>Formulario de Animal Perdido</h1>
-                    <form class="row g-3 needs-validation" novalidate>
+                
+                    <form id="form" class="row g-3 needs-validation" novalidate>
                         <div class="col-md-4 position relative">
-                            <label for="nombre" class="form-label">Nombre</label>
+                            <label for="nombre" class="form-label">Nombre Usuario</label>
                             <input type="text" class="form-control" id="nombreFormContac" value="" required>
                             <!--Mensaje para la validación-->
                             <div class="valid-tooltip">¡Campo Correcto!</div>
                             <div class="invalid-tooltip">Debe completar el campo.</div>
                         </div>
                         <div class="col-md-4">
-                            <label for="nombre" class="form-label">Apellido</label>
-                            <input type="text" class="form-control" id="nombreFormContac" value="">
+                            <label for="apellido" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="apellidoFormContac" value="">
                             <!--Mensaje para la validación-->
                             <div class="valid-feedback">¡Campo Correcto!</div>
                             <div class="invalid-feedback">Debe completar el campo.</div>
                         </div>
                         <div class="col-md-4">
-                            <label for="nombre" class="form-label">Raza</label>
-                            <input type="text" class="form-control" id="nombreFormContac" value="">
+                            <label for="raza" class="form-label">Raza</label>
+                            <input type="text" class="form-control" id="razaFormContac" value="" required>
                             <!--Mensaje para la validación-->
                             <div class="valid-feedback">¡Campo Correcto!</div>
                             <div class="invalid-feedback">Debe completar el campo.</div>
                         </div>
                         <div class="col-md-4">
-                            <label for="nombre" class="form-label">Fecha Encontrado</label>
-                            <input type="date" class="form-control" id="nombreFormContac" value="">
+                            <label for="fecha" class="form-label">Fecha Encontrado</label>
+                            <input type="date" class="form-control" id="fechaFormContac" value="" required>
                             <!--Mensaje para la validación-->
                             <div class="valid-feedback">¡Campo Correcto!</div>
                             <div class="invalid-feedback">Debe completar el campo.</div>
                         </div>
-                        <div class="col-md-3">
-                            <label for="localidad">Localidad</label>
-                            <select name="localidad" id="localidad" class="form-select">
+                        <div class="col-md-4">
+                            <label for="localidad" class="form-label">Localidad</label>
+                            <select name="localidad" id="localidad" class="form-select" required>
                                 <option select disabled value="">Seleccione...</option>
                                 <option value="Coruña">Coruña</option>
                                 <option value="Lugo">Lugo</option>
@@ -102,22 +103,32 @@
                         </div>
                         
                         <div class="col-md-4">
-                            <label for="n" class="form-label"></label>
-                            <input type="file" class="form-control" aria-label ="file example" id="imgForm" required>
-                            <div class="invalid-feedback">Example invalid form file feedback</div>
+                            <label for="n" class="form-label">Añada una imagen</label>
+                            <input type="file" class="form-control" id="imgForm" required>
+                            <div class="invalid-feedback"></div>
                             <!--Mensaje para la validación-->
                             <div class="valid-feedback">¡Campo Correcto!</div>
                             <div class="invalid-feedback">Debe completar el campo.</div>
                         </div>
-                        <button id="enviar" class="btn btn-warning fw-bold" type="submit">Enviar</button>
+                        <div class="col-md-12 h-200">
+                            <label for="validationTextarea" class="form-label">Estado del animal</label>
+                              <textarea rows="6" class="form-control" id="validationTextarea" placeholder="Por favor explique brevemente..." required></textarea>
+                              <!--Mensaje para la validación-->
+                            <div class="valid-feedback">¡Campo Correcto!</div>
+                            <div class="invalid-feedback">Debe completar el campo.</div>
+                        </div>
+                            <label for="buttonV"></label>
+                            <button id="enviar" class="btn btn-warning fw-bold" type="submit">Enviar</button>
+                            
                     </form>
+                    
             </div>
 
             <aside id="sidebar">
                 <div id="about">
                     <h4><span class="span">¿Dinos quien eres?</span></h4>
                         <img id="imagenOscuro" src="./img/perroForm.jpg" />
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet malesuada erat, ac ullamcorper justo.</p>
+                    <p>Tanto si buscas, como has encontrado un animal y quieres ayudar a que los dueños recuperen su mascota este es lugar.</p>
                 </div>
                  <!-- formulario para registrarse. No es definitivo, puede estar en el nav(id="menu") como una opción mas. valorando opciones-->
                  <!--En el formulario se va a crear un patron para validar los datos desde vista cliente para que cuando se envíen los datos solo se tenga que recoger en la base de datos. -->
