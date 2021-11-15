@@ -1,4 +1,4 @@
-// Example starter JavaScript for disabling form submissions if there are invalid fields
+// Validación del formulario para comprobar que los campos están cubiertos
 (function() {
   'use strict';
   window.addEventListener('load', function() {

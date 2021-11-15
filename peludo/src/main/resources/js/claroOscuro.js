@@ -14,6 +14,18 @@ function oscuro(){
     document.getElementById('tema').href ='css/oscuro.css';
     document.getElementById("imagenOscuro").src='./img/gatoOscuro.jpg';
     //alamcenamos en una variable de sesión
-    sessionStorage.setItem('tema', 'css/oscuro.css');    
+    sessionStorage.setItem('tema', 'css/oscuro.css');
 }
 
+/* Lectura desde el localStorage */
+function leerLocalStorage() {
+
+    //Estilo del tema
+    var estilo = sessionStorage.getItem("tema");
+    estiloAplicado = document.getElementById('tema');
+    if (estiloAplicado.href = estilo) {
+        console.log("El estilo es: " + estilo);
+    } else {
+        claro(); // en caso de que no haya selecionado ningún tema este se carga por defecto
+    }
+    }
