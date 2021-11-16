@@ -5,7 +5,7 @@
 
 function claro(){
     document.getElementById('tema').href ='css/claro.css';
-    document.getElementById("imagenOscuro").src='./img/perroForm.jpg';
+   // document.getElementById("imagenOscuro").src='./img/perroForm.jpg';
     //alamcenamos en una variable de sesión
     sessionStorage.setItem('tema', 'css/claro.css');
 }
