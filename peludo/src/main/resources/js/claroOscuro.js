@@ -5,16 +5,19 @@
 
 function claro(){
     document.getElementById('tema').href ='css/claro.css';
-   // document.getElementById("imagenOscuro").src='./img/perroForm.jpg';
-    //alamcenamos en una variable de sesión
+     let img=(document.getElementById("imagenOscuro").src="./img/perroForm.jpg");
+   // alamcenamos en una variable de sesión
     sessionStorage.setItem('tema', 'css/claro.css');
+    sessionStorage.setItem('imagenClara', img);
+
 }
 
 function oscuro(){
     document.getElementById('tema').href ='css/oscuro.css';
-    document.getElementById("imagenOscuro").src='./img/gatoOscuro.jpg';
+    let img=(document.getElementById("imagenOscuro").src ='./img/gatoOscuro.jpg');
     //alamcenamos en una variable de sesión
     sessionStorage.setItem('tema', 'css/oscuro.css');
+    sessionStorage.setItem('imagenOscuro', img);
 }
 
 /* Lectura desde el localStorage */
@@ -28,4 +31,5 @@ function leerLocalStorage() {
     } else {
         claro(); // en caso de que no haya selecionado ningún tema este se carga por defecto
     }
+
     }
