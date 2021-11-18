@@ -10,6 +10,7 @@ function cargaPagina(){
   // document.getElementById('enviar').addEventListener("click", comprobacionFormulario);
 
 
+
     
 }
 //Ingreso del usuario
@@ -88,4 +89,20 @@ function formularioFecha() {
         err += 1;
         $errores.push(new CampoErroneo(`fechaFormContac ${err}`, `El formato de fecha tiene que ser aaaa-mm-dd ej: 1985/08/01`));
     }
+}
+function cargarGaleria(){
+    $(".filter-button").click(function(){
+        var value = $(this).attr('data-filter');
+        if(value == "todo"){
+            $(".filter").show ('1000');
+        }else{
+            $(".filter").not('.' + value).hide ('3000');
+            $(".filter").filter('.' + value).show('3000');
+        }
+    });
+    if ($(".filter-button").removeClass("active")){
+        $(this).removeClass("active");
+    }
+    $(this).addClass("active");
+
 }

@@ -319,6 +319,9 @@ footer {
     width: 100%;
     height: 150px;
   }
+  #columnaFoto img:hover {
+  border: 4px solid white;
+  }
   #columnaFoto .col-lg-4{
     padding: 25px;
   }
