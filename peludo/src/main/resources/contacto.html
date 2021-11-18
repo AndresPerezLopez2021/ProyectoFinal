@@ -60,13 +60,13 @@
             <div id="posts">
                 <h1>Formulario de Animal Perdido</h1>
                 
-                    <form id="form" class="row g-3 needs-validation" novalidate>
-                        <div class="col-md-4 position relative">
-                            <label for="nombre" class="form-label">Nombre Usuario</label>
+                    <form id="formu" class="row g-3 needs-validation" novalidate>
+                        <div class="col-md-4">
+                            <label for="nombreFormContac" class="form-label">Nombre Usuario</label>
                             <input type="text" class="form-control" id="nombreFormContac" value="" required>
                             <!--Mensaje para la validación-->
-                            <div class="valid-tooltip">¡Campo Correcto!</div>
-                            <div class="invalid-tooltip">Debe completar el campo.</div>
+                            <div class="valid-feedback">¡Campo Correcto!</div>
+                            <div class="invalid-feedback">Debe completar el campo.</div>
                         </div>
                         <div class="col-md-4">
                             <label for="apellidoFormContac" class="form-label">Apellido</label>
@@ -77,7 +77,13 @@
                         </div>
                         <div class="col-md-4">
                             <label for="razaFormContac" class="form-label">Raza</label>
-                            <input type="text" class="form-control" id="razaFormContac" value="" required>
+                            <select name="razaFormContac" id="razaFormContac" class="form-select" required>
+                                <option select disabled value="">Seleccione...</option>
+                                <option value="perro">perro</option>
+                                <option value="gato">gato</option>
+                                <option value="pajaro">pájaro</option>
+                                <option value="otros">otros</option>
+                            </select>
                             <!--Mensaje para la validación-->
                             <div class="valid-feedback">¡Campo Correcto!</div>
                             <div class="invalid-feedback">Debe completar el campo.</div>

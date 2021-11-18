@@ -8,7 +8,7 @@ function cargaPagina(){
    document.getElementById("claro").addEventListener("click", claro);
    document.getElementById("oscuro").addEventListener("click", oscuro);
   // document.getElementById('enviar').addEventListener("click", comprobacionFormulario);
-
+cargarGaleria();
 
 
     
@@ -35,6 +35,7 @@ function comprobacionFormulario() {
     formularioApellido();
     formularioRaza();
     formularioFecha();
+    formularioAreaTexto();
     console.log("formulario");
     console.log($errores)
 
@@ -82,7 +83,7 @@ function formularioRaza() {
 
 function formularioFecha() {
     $("#fechaFormContac").attr('required', true);
-    let patronFecha = /^([0-2][0-9]|(3)[0-1])[\/\-](((0)[0-9])|((1)[0-2]))[\/\-]([12]\d{3})$/;
+    let patronFecha = /^([12]\d{3})[\/\-](((0)[0-9])|((1)[0-2]))[\/\-]([0-2][0-9]|(3)[0-1])$/;
     let fechaCorrecto = document.getElementById("fechaFormContac");
     let campoCorrectoFecha = fechaCorrecto.value.match(patronFecha);
     if (!campoCorrectoFecha) {
@@ -90,19 +91,31 @@ function formularioFecha() {
         $errores.push(new CampoErroneo(`fechaFormContac ${err}`, `El formato de fecha tiene que ser aaaa-mm-dd ej: 1985/08/01`));
     }
 }
+function formularioAreaTexto(){
+    $("#validationTextarea").attr('required', true);
+     if ($("#validationTextarea").val() == "") {
+            //Almacenamos los errores
+            err += 1;
+            $errores.push(new CampoErroneo(`validationTextarea ${err}`, `Debe estar cubierto el estado del animal`));
+        }
+
+}
+
+//Se crea un filter para las imagenes publicadas de este modo el usuario puede visualizar la raza que esté interesada
+
 function cargarGaleria(){
     $(".filter-button").click(function(){
         var value = $(this).attr('data-filter');
         if(value == "todo"){
-            $(".filter").show ('1000');
+            $(".filter").show ('100');
         }else{
-            $(".filter").not('.' + value).hide ('3000');
-            $(".filter").filter('.' + value).show('3000');
+            $(".filter").not('.' + value).hide ('300');
+            $(".filter").filter('.' + value).show('300');
         }
     });
     if ($(".filter-button").removeClass("active")){
         $(this).removeClass("active");
     }
-    $(this).addClass("active");
+    $(this).addClass("active")
 
 }

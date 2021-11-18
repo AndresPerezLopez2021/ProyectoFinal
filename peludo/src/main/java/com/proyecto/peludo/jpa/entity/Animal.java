@@ -20,8 +20,11 @@ public class Animal implements Serializable {
     @Column(name = "fecha_encontrado", nullable = false)
     private LocalDateTime fechaEncontrado;
 
-    @Column(name = "fecha_baja", nullable = false)
+    @Column(name = "fecha_baja")
     private LocalDateTime fechaBaja;
+
+    @Column (name = "estado_animal", nullable = false)
+    private String estadoAnimal;
 
     /*@OneToMany(mappedBy = "tipo_raza")
     private TipoRaza tipoRaza;
