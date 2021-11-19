@@ -249,7 +249,7 @@ footer {
 }
 /*Estilos contacto.html*/
 
-#posts{
+#posts, #login{
     margin-top: 10px;
     margin-bottom: 250px;
     line-height: 22px;
