@@ -8,10 +8,8 @@ function cargaPagina(){
    document.getElementById("claro").addEventListener("click", claro);
    document.getElementById("oscuro").addEventListener("click", oscuro);
   // document.getElementById('enviar').addEventListener("click", comprobacionFormulario);
-cargarGaleria();
+   cargarGaleria();
 
-
-    
 }
 //Ingreso del usuario
 

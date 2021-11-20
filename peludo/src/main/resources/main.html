@@ -14,6 +14,8 @@
     <!-- Mis Scripts -->
     <script type="text/javascript" src="./js/index.js"></script>
     <script type="text/javascript" src="./js/claroOscuro.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script type="text/javascript" src="./js/galeria.js"></script>
 </head>
 
 <body>
@@ -67,26 +69,34 @@
                 </div>
                  <!-- formulario para registrarse. No es definitivo, puede estar en el nav(id="menu") como una opción mas. valorando opciones-->
                  <!--En el formulario se va a crear un patron para validar los datos desde vista cliente para que cuando se envíen los datos solo se tenga que recoger en la base de datos. -->
-          
+
                 <div id="login">
                     <h4><span class="span">Identificate</span></h4>
-                    <form name="form" id="form">
-                        <label for="email">
-                            Correo
-                        </label>
-                        <input type="text" name="nombre" id="nombre" />
 
-                        <label for="email">
-                            Correo Confirmación
-                        </label>
-                        <input type="text" name="email" id="email" />
-
-                        <label for="password">
-                            Contraseña
-                        </label>
-                        <input type="password" name="password" id="password" />
-
-                        <input type="submit" class="btn btn-warning fw-bold" value="Entrar" id="entrar" name="entrar" onclick="formularioIdentificacion()" />
+                    <form  id="form" class="needs-validation" novalidate>
+                        <div class="col-md-16">
+                            <label for="email"  class="form-label">Correo</label>
+                            <input type="text" name="email" id="email" required/>
+                            <!--Mensaje para la validación-->
+                            <div class="valid-feedback">¡Campo Correcto!</div>
+                            <div class="invalid-feedback">Debe completar el campo.</div>
+                        </div>
+                        <div class="col-md-16">
+                            <label for="emailConfirm" class="form-label">Correo Confirmación</label>
+                            <input type="text" name="emailConfirm" id="emailConfirm" required/>
+                            <!--Mensaje para la validación-->
+                            <div class="valid-feedback">¡Campo Correcto!</div>
+                            <div class="invalid-feedback">Debe completar el campo.</div>
+                        </div>
+                        <div class="col-md-16">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" name="password" id="password" required/>
+                            <!--Mensaje para la validación-->
+                            <div class="valid-feedback">¡Campo Correcto!</div>
+                            <div class="invalid-feedback">Debe completar el campo.</div>
+                        </div>
+                        <label for="entrar"></label>
+                        <input type="button" class="btn btn-warning fw-bold" value="Entrar" id="entrar" name="entrar" onclick="formularioIdentificacion()" />
                         <!--En el index.js modifico la propiedad de type="button" para que en el momento de clicar el boton se muestre el mensaje-->
                     </form>
                 </div>
