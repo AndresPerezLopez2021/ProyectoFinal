@@ -122,7 +122,11 @@ function formularioIdentificacion() {
     if (err == 0) {
         alert("Envio Correcto");
 
-        onRequestHandler();
+        const xhr = new XMLHttpRequest();
+        xhr.addEventListener("load",onRequestHandler);
+        xhr.open('GET', 'http://localhost:8080/animals');
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send();
     } else {
         errorMensaje = "hay errores!!\n"
         $errores.map(function(obj) {
@@ -186,17 +190,11 @@ function cargarGaleria(){
 
 //REQUEST
 
-const xhr = new XMLHttpRequest();
 function onRequestHandler(){
 if ( this.readyState == 4 && this.status == 200){
     const data = JSON.parse(this.response);
     console.log(data);
-    //Pruebas
-   // const HTMLResponse = document.querySelector ('#request');
-   // const mapaUser = data.map((user)=> '<li>${user.name}');
+    //const HTMLResponse = document.querySelector ('#request');
+    //const mapaUser = data.map((user)=> '<li>${user.name}');
 }
-xhr.addEventListener("load", onRequestHandler);
-xhr.open('GET', 'http://localhost:8080/animals');
-xhr.send();
-
 }
