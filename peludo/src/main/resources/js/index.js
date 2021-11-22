@@ -112,6 +112,7 @@ function formularioIdentificacion() {
     err = 0;
     console.log($errores)
     correoLogin();
+    nombreLogin();
     correoConfirmLogin();
     contrasenha();
     console.log("formulario");
@@ -134,10 +135,19 @@ function formularioIdentificacion() {
         confirm(errorMensaje);
     }
 }
+function nombreLogin() {
+    //nombre, le añadimos un atributo al html
+    $("#nombre").attr('required', true);
+    if ($("#nombre").val() == "") {
+        //Almacenamos los errores
+        err += 1;
+        $errores.push(new CampoErroneo(`nombreFormContac ${err}`, `Debe estar cubierto el nombre`));
+    }
+}
 function correoLogin() {
     var re = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
     var emailOK = document.getElementById("email");
-    var eOK = emailOK.value.match(re); //Devolve null se non cumpre a expresión regular "re"...
+    var eOK = emailOK.value.match(re);
     if (!eOK) {
         console.log(emailOK.value + ' El campo de emamil no es correcto');
         err += 1;

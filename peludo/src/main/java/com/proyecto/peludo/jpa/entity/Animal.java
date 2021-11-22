@@ -89,7 +89,9 @@ public class Animal implements Serializable {
 
     @Override
     public String toString() {
-        return "{ idAnimal=" + idAnimal +
+        return "{ " +
+                "Lista de Animales" +
+                "idAnimal=" + idAnimal +
                 ", lugarEncontrado='" + lugarEncontrado + '\'' +
                 ", fechaEncontrado=" + fechaEncontrado +
                 ", fechaBaja=" + fechaBaja + '}';

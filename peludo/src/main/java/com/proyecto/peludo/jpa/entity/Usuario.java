@@ -9,7 +9,8 @@ import java.util.Objects;
 public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_usuario")
+    //@Column(unique = true, nullable = false)
+   @Column(name = "id_usuario")
     private Integer idUsuario;
 
     @Column(name = "nombre")
