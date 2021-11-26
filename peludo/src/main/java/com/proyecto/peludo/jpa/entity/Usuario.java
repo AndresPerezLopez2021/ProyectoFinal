@@ -8,9 +8,8 @@ import java.util.Objects;
 @Table(name = "usuario")
 public class Usuario implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    //@Column(unique = true, nullable = false)
-   @Column(name = "id_usuario")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario")
     private Integer idUsuario;
 
     @Column(name = "nombre")
@@ -20,20 +19,19 @@ public class Usuario implements Serializable {
     private String email;
 
     @Column(name= "contraseña")
-    private String contraseña;
+    private String pass;
 
     @Column(name = "tipo_usuario")
     private String tipoUsuario;
 
-    public Usuario(Integer idUsuario, String nombre, String email, String contraseña, String tipoUsuario) {
+    public Usuario() { }
+
+    public Usuario(Integer idUsuario, String nombre, String email, String pass, String tipoUsuario) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.email = email;
-        this.contraseña = contraseña;
+        this.pass = pass;
         this.tipoUsuario = tipoUsuario;
-    }
-
-    public Usuario() {
     }
 
     public Integer getIdUsuario() { return idUsuario;}
@@ -48,9 +46,9 @@ public class Usuario implements Serializable {
 
     public void setEmail(String email) { this.email = email; }
 
-    public String getContraseña() { return contraseña; }
+    public String getPass() { return pass; }
 
-    public void setContraseña(String contraseña) { this.contraseña = contraseña; }
+    public void setPass(String pass) { this.pass = pass; }
 
     public String getTipoUsuario() { return tipoUsuario; }
 
@@ -61,20 +59,22 @@ public class Usuario implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario = (Usuario) o;
-        return Objects.equals(idUsuario, usuario.idUsuario) && Objects.equals(nombre, usuario.nombre) && Objects.equals(email, usuario.email) && Objects.equals(contraseña, usuario.contraseña) && Objects.equals(tipoUsuario, usuario.tipoUsuario);
+        return Objects.equals(idUsuario, usuario.idUsuario) && Objects.equals(nombre, usuario.nombre) &&
+                Objects.equals(email, usuario.email) && Objects.equals(pass, usuario.pass) &&
+                Objects.equals(tipoUsuario, usuario.tipoUsuario);
     }
 
     @Override
-    public int hashCode(){return Objects.hash  (idUsuario, nombre, email, contraseña, tipoUsuario);}
+    public int hashCode() {
+        return Objects.hash(idUsuario, nombre, email, pass, tipoUsuario);
+    }
 
     @Override
     public String toString() {
-        return "Usuario{" +
-                "idUsuario=" + idUsuario +
+        return "{ idUsuario=" + idUsuario +
                 ", nombre='" + nombre + '\'' +
                 ", email='" + email + '\'' +
-                ", contraseña='" + contraseña + '\'' +
-                ", tipoUsuario='" + tipoUsuario + '\'' +
-                '}';
+                ", pass='" + pass + '\'' +
+                ", tipoUsuario='" + tipoUsuario + '\'' + '}';
     }
 }

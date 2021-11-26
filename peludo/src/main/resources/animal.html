@@ -251,6 +251,13 @@
 
         <form  id="form" class="needs-validation" novalidate>
           <div class="col-md-16">
+            <label for="nombre"  class="form-label">Nombre</label>
+            <input type="text" name="nombre" id="nombre" required/>
+            <!--Mensaje para la validación-->
+            <div class="valid-feedback">¡Campo Correcto!</div>
+            <div class="invalid-feedback">Debe completar el campo.</div>
+          </div>
+          <div class="col-md-16">
             <label for="email"  class="form-label">Correo</label>
             <input type="text" name="email" id="email" required/>
             <!--Mensaje para la validación-->

@@ -1,64 +1,89 @@
 package com.proyecto.peludo.jpa.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "raza")
+@IdClass(IdRaza.class)
 public class Raza implements Serializable {
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_raza_t")
+    private Integer idRazaTabla;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
     @Column(name = "id_raza")
-    private  int idRaza;
+    private Integer idRaza;
 
-    @Column(name = "id_animal")
-    private int idAnimal;
+    @Id
+    @Column(name = "id_especie")
+    private Integer idEspecie;
 
     @Column(name = "nombre")
     private String nombre;
 
-    public Raza(int idRaza, int idAnimal, String nombre) {
-        this.idRaza = idRaza;
-        this.idAnimal = idAnimal;
-        this.nombre = nombre;
-    }
-
     public Raza() {
     }
 
-    public int getIdRaza() { return idRaza; }
+    public Raza(Integer idRazaTabla, Integer idRaza, Integer idEspecie, String nombre) {
+        this.idRazaTabla = idRazaTabla;
+        this.idRaza = idRaza;
+        this.idEspecie = idEspecie;
+        this.nombre = nombre;
+    }
 
-    public void setIdRaza(int idRaza) { this.idRaza = idRaza; }
+    public Integer getIdRazaTabla() {
+        return idRazaTabla;
+    }
 
-    public int getIdAnimal() { return idAnimal; }
+    public void setIdRazaTabla(Integer idRazaTabla) {
+        this.idRazaTabla = idRazaTabla;
+    }
 
-    public void setIdAnimal(int idAnimal) { this.idAnimal = idAnimal; }
+    public Integer getIdRaza() {
+        return idRaza;
+    }
 
-    public String getNombre() { return nombre; }
+    public void setIdRaza(Integer idRaza) {
+        this.idRaza = idRaza;
+    }
 
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public Integer getIdEspecie() {
+        return idEspecie;
+    }
 
+    public void setIdEspecie(Integer idEspecie) {
+        this.idEspecie = idEspecie;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Raza raza = (Raza) o;
-        return Objects.equals(idRaza, raza.idRaza) && Objects.equals(idAnimal, raza.idAnimal) && Objects.equals(nombre, raza.nombre);
+        return Objects.equals(idRazaTabla, raza.idRazaTabla) && Objects.equals(idRaza, raza.idRaza) && Objects.equals(idEspecie, raza.idEspecie) && Objects.equals(nombre, raza.nombre);
     }
+
     @Override
     public int hashCode() {
-        return Objects.hash(idRaza, idAnimal, nombre);
+        return Objects.hash(idRazaTabla, idRaza, idEspecie, nombre);
     }
 
     @Override
     public String toString() {
-        return "Raza{" +
-                "idRaza=" + idRaza +
-                ", idAnimal=" + idAnimal +
+        return "{idRazaTabla=" + idRazaTabla +
+                ", idRaza=" + idRaza +
+                ", idEspecie=" + idEspecie +
                 ", nombre='" + nombre + '\'' +
                 '}';
     }

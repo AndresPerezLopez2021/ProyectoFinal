@@ -7,57 +7,55 @@ import java.util.Objects;
 @Entity
 @Table(name = "especie")
 public class Especie implements Serializable {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_especie")
-    private int idEspecie;
-
-    @Column(name = "id_raza")
-    private int idRaza;
+    private Integer idEspecie;
 
     @Column(name = "nombre")
     private String nombre;
 
-    public Especie(int idEspecie, int idRaza, String nombre) {
+    public Especie(Integer idEspecie, String nombre) {
         this.idEspecie = idEspecie;
-        this.idRaza = idRaza;
         this.nombre = nombre;
     }
 
     public Especie() {
     }
 
-    public int getIdEspecie() { return idEspecie; }
+    public Integer getIdEspecie() {
+        return idEspecie;
+    }
 
-    public void setIdEspecie(int idEspecie) { this.idEspecie = idEspecie; }
+    public void setIdEspecie(Integer idEspecie) {
+        this.idEspecie = idEspecie;
+    }
 
-    public int getIdRaza() { return idRaza; }
+    public String getNombre() {
+        return nombre;
+    }
 
-    public void setIdRaza(int idRaza) { this.idRaza = idRaza; }
-
-    public String getNombre() { return nombre; }
-
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Especie especie = (Especie) o;
-        return Objects.equals(idEspecie, especie.idEspecie) && Objects.equals(idRaza, especie.idRaza) && Objects.equals(nombre, especie.nombre);
+        return Objects.equals(idEspecie, especie.idEspecie) && Objects.equals(nombre, especie.nombre);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idEspecie, idRaza, nombre);
+        return Objects.hash(idEspecie, nombre);
     }
 
     @Override
     public String toString() {
-        return "Especie{" +
-                "idEspecie=" + idEspecie +
-                ", idRaza=" + idRaza +
+        return "{ idEspecie=" + idEspecie +
                 ", nombre='" + nombre + '\'' +
                 '}';
     }

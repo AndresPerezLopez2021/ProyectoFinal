@@ -10,7 +10,7 @@ import java.util.Objects;
 public class Animal implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_animal")
     private Integer idAnimal;
 
@@ -23,55 +23,82 @@ public class Animal implements Serializable {
     @Column(name = "fecha_baja")
     private LocalDateTime fechaBaja;
 
-    @Column (name = "estado_animal", nullable = false)
+    @Column (name = "estado_animal", nullable = false, length = 150)
     private String estadoAnimal;
 
-    /*@OneToMany(mappedBy = "tipo_raza")
-    private TipoRaza tipoRaza;
+    @Column (name = "id_raza_t")
+    private Integer idRaza;
 
-    @OneToMany(mappedBy = "id_usuario")
-    private Usuario usuario;*/
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="id_usuario")
+    private Usuario usuario;
 
-    public Animal(Integer idAnimal, String lugarEncontrado, LocalDateTime fechaEncontrado, LocalDateTime fechaBaja) {
+    public Animal() { }
+
+    public Animal(Integer idAnimal, String lugarEncontrado, LocalDateTime fechaEncontrado, LocalDateTime fechaBaja, String estadoAnimal, Integer idRaza, Usuario usuario) {
         this.idAnimal = idAnimal;
         this.lugarEncontrado = lugarEncontrado;
         this.fechaEncontrado = fechaEncontrado;
         this.fechaBaja = fechaBaja;
-    }
-
-    public Animal() {
+        this.estadoAnimal = estadoAnimal;
+        this.idRaza = idRaza;
+        this.usuario = usuario;
     }
 
     public Integer getIdAnimal() {
         return idAnimal;
     }
 
-    public String getLugarEncontrado() {
-        return lugarEncontrado;
-    }
-
-    public LocalDateTime getFechaEncontrado() {
-        return fechaEncontrado;
-    }
-
-    public LocalDateTime getFechaBaja() {
-        return fechaBaja;
-    }
-
     public void setIdAnimal(Integer idAnimal) {
         this.idAnimal = idAnimal;
+    }
+
+    public String getLugarEncontrado() {
+        return lugarEncontrado;
     }
 
     public void setLugarEncontrado(String lugarEncontrado) {
         this.lugarEncontrado = lugarEncontrado;
     }
 
+    public LocalDateTime getFechaEncontrado() {
+        return fechaEncontrado;
+    }
+
     public void setFechaEncontrado(LocalDateTime fechaEncontrado) {
         this.fechaEncontrado = fechaEncontrado;
     }
 
+    public LocalDateTime getFechaBaja() {
+        return fechaBaja;
+    }
+
     public void setFechaBaja(LocalDateTime fechaBaja) {
         this.fechaBaja = fechaBaja;
+    }
+
+    public String getEstadoAnimal() {
+        return estadoAnimal;
+    }
+
+    public void setEstadoAnimal(String estadoAnimal) {
+        this.estadoAnimal = estadoAnimal;
+    }
+
+    public Integer getIdRaza() {
+        return idRaza;
+    }
+
+    public void setIdRaza(Integer idRaza) {
+        this.idRaza = idRaza;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override
@@ -79,21 +106,24 @@ public class Animal implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Animal animal = (Animal) o;
-        return Objects.equals(idAnimal, animal.idAnimal) && Objects.equals(lugarEncontrado, animal.lugarEncontrado) && Objects.equals(fechaEncontrado, animal.fechaEncontrado) && Objects.equals(fechaBaja, animal.fechaBaja);
+        return Objects.equals(idAnimal, animal.idAnimal) && Objects.equals(lugarEncontrado, animal.lugarEncontrado) && Objects.equals(fechaEncontrado, animal.fechaEncontrado) && Objects.equals(fechaBaja, animal.fechaBaja) && Objects.equals(estadoAnimal, animal.estadoAnimal) && Objects.equals(idRaza, animal.idRaza) && Objects.equals(usuario, animal.usuario);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idAnimal, lugarEncontrado, fechaEncontrado, fechaBaja);
+        return Objects.hash(idAnimal, lugarEncontrado, fechaEncontrado, fechaBaja, estadoAnimal, idRaza, usuario);
     }
 
     @Override
     public String toString() {
-        return "{ " +
-                "Lista de Animales" +
+        return "{" +
                 "idAnimal=" + idAnimal +
                 ", lugarEncontrado='" + lugarEncontrado + '\'' +
                 ", fechaEncontrado=" + fechaEncontrado +
-                ", fechaBaja=" + fechaBaja + '}';
+                ", fechaBaja=" + fechaBaja +
+                ", estadoAnimal='" + estadoAnimal + '\'' +
+                ", idRaza=" + idRaza +
+                ", usuario=" + usuario +
+                '}';
     }
 }

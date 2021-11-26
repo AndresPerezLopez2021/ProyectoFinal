@@ -3,15 +3,88 @@ window.onload = cargaPagina;
 function cargaPagina(){
 
     leerLocalStorage();
-
+   document.getElementById('entrar').addEventListener("click", escribirLocalStorage);
    document.getElementById("sidebar").style.maxWidth = "325px";
    document.getElementById("claro").addEventListener("click", claro);
    document.getElementById("oscuro").addEventListener("click", oscuro);
-  // document.getElementById('enviar').addEventListener("click", comprobacionFormulario);
    cargarGaleria();
+//formularioIdentificacion();
 
 }
+function nodoCerrarSesion() {
+
+    let login = document.getElementById("login");
+    let cerrarSesion = document.createElement("a");
+    cerrarSesion.setAttribute("href", "principal.html");
+    cerrarSesion.setAttribute("onclick", 'eliminarLocalStorage();');
+    let textoSesion = document.createTextNode("Cerrar Sesión");
+    cerrarSesion.appendChild(textoSesion);
+    login.appendChild(cerrarSesion);
+    console.log(login.appendChild(cerrarSesion));
+
+}
+//IDENTIFICACIÓN//
+function escribirLocalStorage() {
+    /* Verifica la posibilidad de usar localStorage y JSON */
+    if (typeof localStorage != "undefined" && JSON) {
+        /* Definición de un objeto Javascript datosPersona */
+        var datosPersona = {
+            nombre: document.getElementById("nombre").value,
+
+
+        };
+        /* Serialización en un objeto JSON de nombre identidad */
+        localStorage.setItem("identidad", JSON.stringify(datosPersona));
+
+        /* Visualización de control */
+        console.log(`Valor almacenado: ${JSON.stringify(datosPersona)}`);
+    } else {
+        /* Mensaje de error (sin posibilidad de almacén localStorage) */
+        alert("localStorage no está soportado");
+    }
+};
 //Ingreso del usuario
+function leerLocalStorage() {
+    let datosPersona;
+    /* Verifica la posibilidad de usar localStorage y JSON */
+    if (typeof localStorage != "undefined" && JSON) {
+        // comprobamos si hay datos almacenados
+        if (localStorage.getItem('identidad') !== undefined && localStorage.getItem('identidad')) {
+            /* Deserialización del objeto JSON leído */
+            datosPersona = JSON.parse(localStorage.getItem("identidad"));
+
+            // Actualización de los campos de visualización
+            document.getElementById("login").innerHTML = (`<b>Bienvenido, ${datosPersona.nombre} </b>`);
+            nodoCerrarSesion();
+            /* Visualización de control */
+            console.log("Lectura desde localStorage realizada");
+        }
+    } else {
+        /* Mensaje de error (sin posibilidad de almacén localStorage) */
+        alert("localStorage no está soportado");
+    }
+
+};
+/*Función eliminarLocalStorage */
+function eliminarLocalStorage() {
+
+    /* Verifica la posibilidad de usar localStorage y JSON */
+    if (typeof localStorage != "undefined" && JSON) {
+        //confirmación de que se quiere cerrar sesión
+        var mensajeConfirm = confirm("¿Quiere Cerrar la Sesión Actual?");
+        if (mensajeConfirm == true) {
+
+            localStorage.removeItem("identidad");
+            location.reload();
+        }
+        /* Visualización de control */
+
+    } else {
+        /* Mensaje de error (sin posibilidad 	de almacén localStorage) */
+        alert("localStorage no está soportado");
+    }
+};
+
 
 //Se crea una clase para almacenar los errores en caso de que haya en el formulario de contacto.html
 
@@ -40,6 +113,23 @@ function comprobacionFormulario() {
 
     if (err == 0) {
         alert("Envio Correcto");
+        const params = {
+                        email: document.querySelector('#emailFormContac').value,
+                        idRaza: document.querySelector('#razaFormContac').value,
+                        idEspecie: document.querySelector('#especieFormContac').value ,
+                        fechaEncontrado: new Date(document.querySelector('#fechaFormContac').value).toISOString().slice(0, -1),
+                        localidad: document.querySelector('#localidadFormContac').value,
+                        urlImg: document.querySelector('#imgForm').value,
+                        estadoAnimal: document.querySelector('#validationTextarea').value
+                }
+
+                const xhr = new XMLHttpRequest();
+                xhr.addEventListener("load",onRequestHandlerContacto);
+                xhr.open('POST', 'http://localhost:8080/animales/animal');
+                xhr.setRequestHeader('Content-type', 'application/json')
+                xhr.setRequestHeader('access-control-allow-methods', 'GETPUTPOSTDELETEHEADOPTIONS')
+                xhr.setRequestHeader('access-control-allow-origin', 'http://localhost:63342')
+                xhr.send(JSON.stringify(params))
     } else {
         errorMensaje = "hay errores!!\n"
         $errores.map(function(obj) {
@@ -108,6 +198,7 @@ function formularioAreaTexto(){
 }
 //FOrmulario de identificación
 function formularioIdentificacion() {
+
     $errores = [];
     err = 0;
     console.log($errores)
@@ -121,11 +212,21 @@ function formularioIdentificacion() {
     if (err == 0) {
         alert("Envio Correcto");
 
+        const params = {
+                nombre: document.querySelector('#nombre').value,
+                email: document.querySelector('#email').value,
+                pass: document.querySelector('#password').value,
+                tipoUsuario: 0
+        }
+
         const xhr = new XMLHttpRequest();
         xhr.addEventListener("load",onRequestHandler);
-        xhr.open('GET', 'http://localhost:8080/animals');
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.send();
+        xhr.open('POST', 'http://localhost:8080/usuarios/usuario');
+        xhr.setRequestHeader('Content-type', 'application/json')
+        xhr.setRequestHeader('access-control-allow-methods', 'GETPUTPOSTDELETEHEADOPTIONS')
+        xhr.setRequestHeader('access-control-allow-origin', 'http://localhost:63342')
+        xhr.send(JSON.stringify(params))
+
     } else {
         errorMensaje = "hay errores!!\n"
         $errores.map(function(obj) {
@@ -202,7 +303,12 @@ function onRequestHandler(){
 if ( this.readyState == 4 && this.status == 200){
     const data = JSON.parse(this.response);
     console.log(data);
-    //const HTMLResponse = document.querySelector ('#request');
-    //const mapaUser = data.map((user)=> '<li>${user.name}');
+    localStorage.setItem("identidad", data.nombre);
+}
+}
+function onRequestHandlerContacto(){
+if ( this.readyState == 4 && this.status == 200){
+    const data = JSON.parse(this.response);
+    console.log(data);
 }
 }

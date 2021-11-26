@@ -9,18 +9,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("/usuario")
-
+@RequestMapping("/usuarios")
 public class UsuarioController {
-    @Autowired
-    UsuarioService usuarioService;
 
-    @GetMapping()
+    @Autowired
+    private UsuarioService usuarioService;
+
+    @GetMapping("/allUsuarios")
     public ArrayList<Usuario> obtenerUsuario(){
         return usuarioService.obtenerUsuario();
     }
-    @PostMapping()
+
+    @PostMapping("/usuario")
     public Usuario guardarUsuario(@RequestBody Usuario usuario){
-        return this.usuarioService.guardarUsuario(usuario);
+
+        return usuarioService.guardarUsuario(usuario);
     }
 }

@@ -63,27 +63,42 @@
                 
                     <form id="formu" class="row g-3 needs-validation" novalidate>
                         <div class="col-md-4">
-                            <label for="nombreFormContac" class="form-label">Nombre Usuario</label>
-                            <input type="text" class="form-control" id="nombreFormContac" value="" required>
+                            <label for="emailFormContac" class="form-label">Email Usuario</label>
+                            <input type="email" class="form-control" id="emailFormContac" value="" required>
                             <!--Mensaje para la validación-->
                             <div class="valid-feedback">¡Campo Correcto!</div>
                             <div class="invalid-feedback">Debe completar el campo.</div>
                         </div>
-                        <div class="col-md-4">
-                            <label for="apellidoFormContac" class="form-label">Apellido</label>
-                            <input type="text" class="form-control" id="apellidoFormContac" value="">
-                            <!--Mensaje para la validación-->
-                            <div class="valid-feedback">¡Campo Correcto!</div>
-                            <div class="invalid-feedback">Debe completar el campo.</div>
-                        </div>
+
                         <div class="col-md-4">
                             <label for="razaFormContac" class="form-label">Raza</label>
                             <select name="razaFormContac" id="razaFormContac" class="form-select" required>
                                 <option select  value="">Seleccione...</option>
-                                <option value="perro">perro</option>
-                                <option value="gato">gato</option>
-                                <option value="pajaro">pájaro</option>
-                                <option value="otros">otros</option>
+                                <option value="1">perro</option>
+                                <option value="2">gato</option>
+                                <option value="3">pájaro</option>
+                                <option value="4">otros</option>
+                            </select>
+                            <!--Mensaje para la validación-->
+                            <div class="valid-feedback">¡Campo Correcto!</div>
+                            <div class="invalid-feedback">Debe completar el campo.</div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="especieFormContac" class="form-label">Especie</label>
+                            <select name="especieFormContac" id="especieFormContac" class="form-select" required>
+                                <option select  value="">Seleccione...</option>
+                                <option value="1">Can de Palleiro</option>
+                                <option value="2">Caniche</option>
+                                <option value="3">Doberman</option>
+                                <option value="4">Pastor Aleman</option>
+                                <option value="5">Pastor Belga</option>
+                                <option value="6">Millinois</option>
+                                <option value="7">Persa</option>
+                                <option value="8">Comun</option>
+                                <option value="9">Egipcio</option>
+                                <option value="10">Canario</option>
+                                <option value="11">Periquito</option>
+                                <option value="12">Otros</option>
                             </select>
                             <!--Mensaje para la validación-->
                             <div class="valid-feedback">¡Campo Correcto!</div>
@@ -120,7 +135,7 @@
                         </div>
                         <div class="col-md-12 h-200">
                             <label for="validationTextarea" class="form-label">Estado del animal</label>
-                              <textarea rows="6" class="form-control" id="validationTextarea" placeholder="Por favor explique brevemente..." required></textarea>
+                              <textarea rows="6" class="form-control" id="validationTextarea" maxlength="150" placeholder="Por favor explique brevemente..." required></textarea>
                               <!--Mensaje para la validación-->
                             <div class="valid-feedback">¡Campo Correcto!</div>
                             <div class="invalid-feedback">Debe completar el campo.</div>
@@ -146,6 +161,13 @@
                     <h4><span class="span">Identificate</span></h4>
 
                     <form  id="form" class="needs-validation" novalidate>
+                        <div class="col-md-16">
+                            <label for="nombre"  class="form-label">Nombre</label>
+                            <input type="text" name="nombre" id="nombre" required/>
+                            <!--Mensaje para la validación-->
+                            <div class="valid-feedback">¡Campo Correcto!</div>
+                            <div class="invalid-feedback">Debe completar el campo.</div>
+                        </div>
                         <div class="col-md-16">
                             <label for="email"  class="form-label">Correo</label>
                             <input type="text" name="email" id="email" required/>
