@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,8 +33,10 @@ public class AnimalServiceImpl implements AnimalService {
 
     //Obtener lista de animales
     @Override
-    public ArrayList<Animal> obtenerAnimal() {
-        return  (ArrayList<Animal>)  animalRepository.findAll();
+    public List<Animal> obtenerAnimal() {
+
+        //Recuperamos todos los animales que no tiene fecha de baja puesta que seria nuestro borrado logico
+        return animalRepository.findAllUp();
     }
 
     @Override
@@ -65,5 +69,21 @@ public class AnimalServiceImpl implements AnimalService {
 
             return new Animal();
         }
+    }
+
+    @Override
+    public boolean borrarAnimal(Integer idAnimal) {
+
+        Optional<Animal> animalBorrar = animalRepository.findById(idAnimal);
+
+        if (!animalBorrar.isPresent()) {
+
+            return false;
+        }
+
+        animalBorrar.get().setFechaBaja(LocalDateTime.now());
+        animalRepository.save(animalBorrar.get());
+
+        return true;
     }
 }
