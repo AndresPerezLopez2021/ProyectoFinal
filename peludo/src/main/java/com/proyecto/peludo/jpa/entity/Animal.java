@@ -26,7 +26,7 @@ public class Animal implements Serializable {
     @Column (name = "estado_animal", nullable = false, length = 150)
     private String estadoAnimal;
 
-    @Column (name = "id_raza_t")
+    @Column (name = "id_raza")
     private Integer idRaza;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -35,7 +35,13 @@ public class Animal implements Serializable {
 
     public Animal() { }
 
-    public Animal(Integer idAnimal, String lugarEncontrado, LocalDateTime fechaEncontrado, LocalDateTime fechaBaja, String estadoAnimal, Integer idRaza, Usuario usuario) {
+    public Animal(Integer idAnimal,
+                  String lugarEncontrado,
+                  LocalDateTime fechaEncontrado,
+                  LocalDateTime fechaBaja,
+                  String estadoAnimal,
+                  Integer idRaza,
+                  Usuario usuario) {
         this.idAnimal = idAnimal;
         this.lugarEncontrado = lugarEncontrado;
         this.fechaEncontrado = fechaEncontrado;
