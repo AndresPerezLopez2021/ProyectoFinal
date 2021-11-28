@@ -1,9 +1,8 @@
 window.onload = cargaPagina;
 
 function cargaPagina(){
-
-    leerLocalStorage();
    document.getElementById('entrar').addEventListener("click", escribirLocalStorage);
+   leerLocalStorage();
    document.getElementById("sidebar").style.maxWidth = "325px";
    document.getElementById("claro").addEventListener("click", claro);
    document.getElementById("oscuro").addEventListener("click", oscuro);
@@ -15,7 +14,7 @@ function nodoCerrarSesion() {
 
     let login = document.getElementById("login");
     let cerrarSesion = document.createElement("a");
-    cerrarSesion.setAttribute("href", "principal.html");
+    cerrarSesion.setAttribute("href", "main.html");
     cerrarSesion.setAttribute("onclick", 'eliminarLocalStorage();');
     let textoSesion = document.createTextNode("Cerrar Sesión");
     cerrarSesion.appendChild(textoSesion);
@@ -45,16 +44,17 @@ function escribirLocalStorage() {
 };
 //Ingreso del usuario
 function leerLocalStorage() {
+console.log("leyendo el localStorage");
     let datosPersona;
     /* Verifica la posibilidad de usar localStorage y JSON */
     if (typeof localStorage != "undefined" && JSON) {
         // comprobamos si hay datos almacenados
         if (localStorage.getItem('identidad') !== undefined && localStorage.getItem('identidad')) {
             /* Deserialización del objeto JSON leído */
-            datosPersona = JSON.parse(localStorage.getItem("identidad"));
-
-            // Actualización de los campos de visualización
-            document.getElementById("login").innerHTML = (`<b>Bienvenido, ${datosPersona.nombre} </b>`);
+            nombreSesion = (localStorage.getItem("identidad"));
+            console.log("datos de la persona " + nombreSesion);
+          // Actualización de los campos de visualización
+            document.getElementById("login").innerHTML = (`<b>Bienvenido, ${nombreSesion} </b>`);
             nodoCerrarSesion();
             /* Visualización de control */
             console.log("Lectura desde localStorage realizada");
@@ -63,6 +63,9 @@ function leerLocalStorage() {
         /* Mensaje de error (sin posibilidad de almacén localStorage) */
         alert("localStorage no está soportado");
     }
+
+
+
 
 };
 /*Función eliminarLocalStorage */
@@ -102,8 +105,8 @@ function comprobacionFormulario() {
     $errores = [];
     err = 0;
     console.log($errores)
-    formularioNombre();
-    formularioApellido();
+    formularioEmailUsuario();
+    formularioEspecie();
     formularioRaza();
     formularioFecha();
     formularioLocalidad();
@@ -140,23 +143,24 @@ function comprobacionFormulario() {
     }
 }
 
-function formularioNombre() {
-    //nombre, le añadimos un atributo al html
-    $("#nombreFormContac").attr('required', true);
-    if ($("#nombreFormContac").val() == "") {
-        //Almacenamos los errores
-        err += 1;
-        $errores.push(new CampoErroneo(`nombreFormContac ${err}`, `Debe estar cubierto el nombre`));
-    }
+function formularioEmailUsuario() {
+     var re = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+        var emailOK = document.getElementById("emailFormContac");
+        var eOK = emailOK.value.match(re);
+        if (!eOK) {
+            console.log(emailOK.value + ' El campo de emamil no es correcto');
+            err += 1;
+            $errores.push(new CampoErroneo("email", `${err}: El campo de emamil no es correcto`))
+        }
 }
 
-function formularioApellido() {
+function formularioEspecie() {
     //apellidos, le añadimos un atributo al html
-    $("#apellidoFormContac").attr('required', true);
-    if ($("#apellidoFormContac").val() == "") {
+    $("#especieFormContac").attr('required', true);
+    if ($("#especieFormContac").val() == "") {
         //Almacenamos los errores
         err += 1;
-        $errores.push(new CampoErroneo(`apellidoFormContac ${err}`, `Debe estar cubierto los apellidos`));
+        $errores.push(new CampoErroneo(`especieFormContac ${err}`, `Debe estar cubierto la Especie`));
     }
 }
 function formularioRaza() {
@@ -198,8 +202,7 @@ function formularioAreaTexto(){
 }
 //FOrmulario de identificación
 function formularioIdentificacion() {
-
-    $errores = [];
+   $errores = [];
     err = 0;
     console.log($errores)
     correoLogin();
@@ -218,7 +221,6 @@ function formularioIdentificacion() {
                 pass: document.querySelector('#password').value,
                 tipoUsuario: 0
         }
-
         const xhr = new XMLHttpRequest();
         xhr.addEventListener("load",onRequestHandler);
         xhr.open('POST', 'http://localhost:8080/usuarios/usuario');
@@ -226,7 +228,6 @@ function formularioIdentificacion() {
         xhr.setRequestHeader('access-control-allow-methods', 'GETPUTPOSTDELETEHEADOPTIONS')
         xhr.setRequestHeader('access-control-allow-origin', 'http://localhost:63342')
         xhr.send(JSON.stringify(params))
-
     } else {
         errorMensaje = "hay errores!!\n"
         $errores.map(function(obj) {
@@ -238,8 +239,8 @@ function formularioIdentificacion() {
 }
 function nombreLogin() {
     //nombre, le añadimos un atributo al html
-    $("#nombre").attr('required', true);
-    if ($("#nombre").val() == "") {
+   nombreSesion= $("#nombre").attr('required', true);
+    if (nombreSesion.val() == "") {
         //Almacenamos los errores
         err += 1;
         $errores.push(new CampoErroneo(`nombreFormContac ${err}`, `Debe estar cubierto el nombre`));
@@ -272,10 +273,14 @@ function correoConfirmLogin() {
 }
 function contrasenha(){
 $("#password").attr('required', true);
-    if ($("#password").val() == "") {
+let pass = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{4,6}$/;
+let passOk= document.getElementById("password");
+let campoOk = passOk.value.match(pass);
+    if (!campoOk) {
+        console.log(passOk.value + ' El campo de contraseña no es correcto');
         //Almacenamos los errores
         err += 1;
-        $errores.push(new CampoErroneo(`password ${err}`, `Debe estar cubierto la contraseña`));
+        $errores.push(new CampoErroneo(`password ${err}`, `La Contraseña debe tener entre 4-6 caracteres y tener al menos una Mayúscula y un digito`));
     }
 }
 //Se crea un filter para las imagenes publicadas de este modo el usuario puede visualizar la raza que esté interesada
@@ -298,7 +303,6 @@ function cargarGaleria(){
 }
 
 //REQUEST
-
 function onRequestHandler(){
 if ( this.readyState == 4 && this.status == 200){
     const data = JSON.parse(this.response);

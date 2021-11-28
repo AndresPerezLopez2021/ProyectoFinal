@@ -21,7 +21,7 @@ function oscuro(){
 }
 
 /* Lectura desde el localStorage */
-function leerLocalStorage() {
+function leerEstilo() {
 
     //Estilo del tema
     var estilo = sessionStorage.getItem("tema");
