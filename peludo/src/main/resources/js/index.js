@@ -3,9 +3,16 @@ window.onload = cargaPagina;
 function cargaPagina(){
    document.getElementById('entrar').addEventListener("click", escribirLocalStorage);
    leerLocalStorage();
+   leerEstilo();
    document.getElementById("sidebar").style.maxWidth = "325px";
    document.getElementById("claro").addEventListener("click", claro);
    document.getElementById("oscuro").addEventListener("click", oscuro);
+   if(document.getElementById("entrar") == null){
+           document.getElementById("nodoN");
+      }else{
+       document.getElementById("entrar").addEventListener("click", formularioIdentificacion)
+      }
+   // document.getElementById("enviar").addEventListener("click", comprobacionFormulario);
    cargarGaleria();
 //formularioIdentificacion();
 
@@ -28,15 +35,13 @@ function escribirLocalStorage() {
     if (typeof localStorage != "undefined" && JSON) {
         /* Definición de un objeto Javascript datosPersona */
         var datosPersona = {
-            nombre: document.getElementById("nombre").value,
-
-
+            nombre: document.getElementById("nombre").value
         };
         /* Serialización en un objeto JSON de nombre identidad */
-        localStorage.setItem("identidad", JSON.stringify(datosPersona));
+        localStorage.setItem("identidad", JSON.stringify(datosPersona.nombre));
 
         /* Visualización de control */
-        console.log(`Valor almacenado: ${JSON.stringify(datosPersona)}`);
+        console.log(`Valor almacenado: ${JSON.stringify(datosPersona.nombre)}`);
     } else {
         /* Mensaje de error (sin posibilidad de almacén localStorage) */
         alert("localStorage no está soportado");
@@ -63,9 +68,6 @@ console.log("leyendo el localStorage");
         /* Mensaje de error (sin posibilidad de almacén localStorage) */
         alert("localStorage no está soportado");
     }
-
-
-
 
 };
 /*Función eliminarLocalStorage */
@@ -113,9 +115,9 @@ function comprobacionFormulario() {
     formularioAreaTexto();
     console.log("formulario");
     console.log($errores)
-
+validationBoostrap();
     if (err == 0) {
-        alert("Envio Correcto");
+        alert("Envio Correcto, Queda pendiente la publicación por un administrador. Muchas gracias!");
         const params = {
                         email: document.querySelector('#emailFormContac').value,
                         idRaza: document.querySelector('#razaFormContac').value,
@@ -228,6 +230,7 @@ function formularioIdentificacion() {
         xhr.setRequestHeader('access-control-allow-methods', 'GETPUTPOSTDELETEHEADOPTIONS')
         xhr.setRequestHeader('access-control-allow-origin', 'http://localhost:63342')
         xhr.send(JSON.stringify(params))
+        location.reload();
     } else {
         errorMensaje = "hay errores!!\n"
         $errores.map(function(obj) {
